@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Edit Transaction</title>
+{% endblock %}
+
+{% block body %} 
+<h2>Edit Transaction</h2>
+<form action='/tHistory/edit/{{tAction.id}}' method='POST'>
+    Item: <input type='text' name='item' id='item' value= "{{ tAction.item }}" >
+    <br>
+    Value: <input type='int' name='value' id='value', value= "{{ tAction.value }}">
+    <br>
+    Content: <input type='text' name='content' id='content', value= "{{ tAction.content }}">
+    <br>    
+    <input type='submit' value="Apply Changes">
+</form>
+<hr>
+{% endblock %}

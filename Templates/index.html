@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Home</title>
+{% endblock %}
+
+{% block body %} 
+<h1>Transaction Hub</h1>
+<form action='/tHistory' method='GET'>
+    <input type='submit' value="View transactions">
+    <br><br>
+</form>
+
+
+<form action='/addTransaction' method='POST'>
+    <input type='submit' value="Add a transaction">
+    <br><br>
+</form>
+{% endblock %}

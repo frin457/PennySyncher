@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Transactions</title> 
+{% endblock %}
+
+{% block body %} 
+
+<h1>All Transactions</h1>
+<hr>
+
+<h2>Append transaction</h2>
+<form action='/tHistory' method='POST'>
+    Item: <input type='text' name='item' id='item'>
+    <br>
+    Value: <input type='int' name='value' id='value'>
+    <br>
+    Content: <input type='text' name='content' id='content'>
+    <br>
+    <input type='submit' value="Add transaction">
+</form>
+<hr>
+
+{% for tAction in history %}
+    <h2>{{ tAction.item }}</h2>
+    <h3>$ {{ tAction.value }}</h3>
+    {% if tAction.purch_date %}
+        <h5>Purchased on : {{tAction.purch_date.strftime('%m-%d-%Y')}}</h5>
+    {% endif %}
+    <p>{{ tAction.content }}</p>
+    <form action='/tHistory/edit/{{tAction.id}}', method='GET'>
+        <input type='submit', value ="Edit transaction">
+    </form>
+    <form action='/tHistory/delete/{{tAction.id}}', method='GET'>
+        <input type='submit', value ="Delete">
+    </form>
+    <hr>
+{% endfor %}
+
+{% endblock %}
